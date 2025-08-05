@@ -69,16 +69,6 @@ export function Hero() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
           <Link
-            href={links.inviteBot}
-            className="flex items-center justify-center gap-2 bg-[#5865F2] hover:bg-[#4752C4] text-white px-8 py-3 rounded-lg font-semibold text-base transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 animate-bounce-slow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#5865F2]"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Add Role Reactor to Discord Server"
-          >
-            <FaDiscord size={20} className="-ml-1" />
-            Add to Discord
-          </Link>
-          <Link
             href="/docs"
             className="text-gray-600 dark:text-gray-400 hover:text-indigo-500 dark:hover:text-indigo-400 px-8 py-3 text-base font-medium transition-colors border border-gray-200 dark:border-gray-700 rounded-lg hover:border-indigo-300 dark:hover:border-indigo-500 hover:bg-gray-50 dark:hover:bg-gray-800 animate-fade-in focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-400"
             aria-label="Documentation"

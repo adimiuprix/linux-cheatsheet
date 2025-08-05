@@ -28,7 +28,7 @@ export function Features() {
       <div className="max-w-[var(--spacing-fd-container)] mx-auto text-center">
         <div className="text-center mb-16">
           <h2 className="text-2xl font-medium bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent mb-3">
-            Why Role Reactor?
+            Cheatsheets linux
           </h2>
           <p className="text-gray-600 dark:text-gray-400">
             Simple, reliable, and powerful
