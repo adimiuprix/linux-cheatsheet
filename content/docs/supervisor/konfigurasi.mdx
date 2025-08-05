@@ -1,0 +1,98 @@
+---
+title: Konfigurasi
+description: Contoh konfigurasi Supervisor untuk menjalankan aplikasi sebagai service, termasuk Laravel queue, Node.js, dan lainnya.
+keywords: supervisor, konfigurasi, supervisord.conf, process manager, daemon, service linux
+---
+
+import { CodeBlock } from 'fumadocs-ui/components/codeblock';
+import { Callout } from 'fumadocs-ui/components/callout';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+
+# Konfigurasi Supervisor
+
+Supervisor menggunakan file konfigurasi `.conf` untuk mendefinisikan proses yang akan dijalankan. Biasanya file-file ini diletakkan di folder `/etc/supervisor/conf.d/`
+
+Setiap file bisa berisi satu atau beberapa program yang akan diawasi.
+
+Setelah menambahkan konfigurasi baru, jalankan:
+```bash
+sudo supervisorctl reread
+sudo supervisorctl update
+```
+
+## 📁 Struktur Dasar Konfigurasi
+
+```ini
+[program:namaservice]
+process_name=%(nama_program_isi_bebas)s
+command=/path/ke/interpreter /path/ke/file/commandnya command
+autostart=true
+autorestart=true
+user=nama_user
+redirect_stderr=true
+stderr_logfile=/var/log/nama_service.err.log
+stdout_logfile=/var/log/nama_service.out.log
+```
+
+📌 Contoh Konfigurasi
+<Tabs items={['Laravel Queue', 'Node.js', 'Gunicorn (Python)', 'Next.js']}>
+<Tab value="Laravel Queue">
+```ini
+[program:laravel-queue]
+command=/usr/bin/php artisan queue:work
+directory=/var/www/laravel-app
+autostart=true
+autorestart=true
+user=nama_user
+stdout_logfile=/var/log/laravel-queue.log
+stderr_logfile=/var/log/laravel-queue-error.log
+```
+</Tab>
+<Tab value="Node.js">
+```ini
+[program:node-app]
+command=/usr/bin/node index.js
+directory=/home/user/myapp
+autostart=true
+autorestart=true
+user=nama_user
+stdout_logfile=/var/log/node-app.log
+stderr_logfile=/var/log/node-app-error.log
+```
+</Tab>
+<Tab value="Gunicorn (Python)">
+```ini
+[program:gunicorn-app]
+command=/usr/local/bin/gunicorn app:app -b 0.0.0.0:8000
+directory=/home/user/myproject
+autostart=true
+autorestart=true
+user=nama_user
+stdout_logfile=/var/log/gunicorn.log
+stderr_logfile=/var/log/gunicorn-error.log
+```
+</Tab>
+<Tab value="Next.js">
+```ini
+[program:nextjs-app]
+command=/usr/bin/npm run start
+directory=/home/user/my-nextjs-app
+autostart=true
+autorestart=true
+user=nama_user
+stdout_logfile=/var/log/nextjs.log
+stderr_logfile=/var/log/nextjs-error.log
+```
+</Tab>
+</Tabs>
+
+🔁 Reload Supervisor
+Setelah kamu buat atau ubah file `.conf`, jangan lupa reload:
+```bash
+sudo supervisorctl reread
+sudo supervisorctl update
+```
+Untuk melihat status semua program:
+```bash
+sudo supervisorctl status
+```

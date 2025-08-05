@@ -1,0 +1,73 @@
+---
+title: Perintah
+description: Daftar perintah umum menggunakan supervisorctl untuk mengelola proses yang dijalankan oleh Supervisor.
+keywords: supervisorctl, supervisor command, restart service, stop process, process control
+---
+
+import { Callout } from 'fumadocs-ui/components/callout';
+import { CodeBlock } from 'fumadocs-ui/components/codeblock';
+
+# Perintah Supervisor
+
+Supervisor menggunakan perintah `supervisorctl` untuk mengelola proses yang sedang dijalankan. Berikut adalah daftar perintah umum yang bisa kamu gunakan.
+
+## 📜 Daftar Perintah
+
+### 🔄 Restart Semua Service
+
+```bash
+sudo supervisorctl restart all
+```
+
+🔄 Restart Satu Service
+```bash
+sudo supervisorctl restart nama_service
+```
+
+▶️ Menjalankan Service
+```bash
+sudo supervisorctl start nama_service
+```
+
+⏹️ Menghentikan Service
+```bash
+sudo supervisorctl stop nama_service
+```
+
+📋 Melihat Status Semua Service
+```bash
+sudo supervisorctl status
+```
+
+🔁 Reload Ulang Semua Konfigurasi (setelah edit file .conf)
+```bash
+sudo supervisorctl reread
+sudo supervisorctl update
+```
+
+<Callout type="info">
+`reread` akan membaca ulang semua file konfigurasi, sedangkan `update` akan menjalankan/mengubah service yang baru dikenali atau diubah.
+</Callout>
+
+🔧 Masuk ke Mode Interaktif
+```bash
+sudo supervisorctl
+```
+
+Setelah masuk, kamu bisa langsung ketik perintah seperti:
+- `status`
+- `restart nama_service`
+- `stop nama_service`
+- `exit`
+
+🧠 Tips
+Gunakan `tail -f` untuk melihat isi log secara real-time:
+
+```bash
+tail -f /var/log/nama_service.out.log
+```
+
+Untuk restart Supervisor daemon (bukan hanya servicenya):
+```bash
+sudo systemctl restart supervisor
+```

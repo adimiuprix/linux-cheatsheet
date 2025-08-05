@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "fumadocs-ui",
+    "fumadocs-ui/markdownlint"
+  ],
+  "plugins": [
+    "fumadocs-ui"
+  ],
+  "rules": {
+    "no-inline-html": false,
+    "no-duplicate-header": false,
+    "no-multiple-blanks": false,
+    "no-hard-tabs": false,
+    "line-length": false
+  }
+}

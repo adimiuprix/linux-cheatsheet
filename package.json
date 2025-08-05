@@ -1,0 +1,57 @@
+{
+  "name": "linux-cheat-sheet",
+  "version": "1.0.0",
+  "description": "Kumpulan perintah Linux dari berbagai sumber, disusun dalam dokumentasi interaktif yang mudah dipahami.",
+  "private": true,
+  "keywords": [
+    "linux",
+    "cheatsheet",
+    "terminal",
+    "shell",
+    "bash",
+    "documentation",
+    "next.js"
+  ],
+  "author": "adimiuprix",
+  "license": "MIT",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adimiuprix/linux-cheat-sheet.git"
+  },
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev --turbo",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
+    "postinstall": "fumadocs-mdx",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "fumadocs-core": "15.6.5",
+    "fumadocs-mdx": "11.7.0",
+    "fumadocs-ui": "15.6.5",
+    "lucide-react": "^0.525.0",
+    "next": "15.4.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-icons": "^5.5.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@tailwindcss/postcss": "^4.1.11",
+    "@types/mdx": "^2.0.13",
+    "@types/node": "24.1.0",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "eslint": "^9.31.0",
+    "eslint-config-next": "15.4.3",
+    "husky": "^9.1.7",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5.8.3"
+  }
+}

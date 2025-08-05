@@ -1,0 +1,86 @@
+---
+title: Installasi
+description: Supervisor adalah sistem kontrol proses yang memungkinkan pengguna menjalankan dan mengelola aplikasi sebagai background service dengan mudah, stabil, dan otomatis.
+keywords: supervisor, process control, linux, systemd, daemon, service manager, auto restart
+---
+
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { Card, Cards } from 'fumadocs-ui/components/card';
+import { Callout } from 'fumadocs-ui/components/callout';
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+
+# Installasi Supervisor
+
+Berikut adalah langkah-langkah untuk menginstal Supervisor di berbagai sistem Linux yang umum digunakan. Supervisor bisa dijalankan di hampir semua distro, selama Python tersedia.
+
+## 📦 Installasi Cepat
+
+<Tabs items={['Debian/Ubuntu', 'CentOS / RHEL / Fedora', 'Arch / Manjaro', 'Via Python (Cross-platform)']}>
+
+<Tab value="Debian/Ubuntu">
+```bash
+sudo apt update
+sudo apt install supervisor
+```
+Setelah terinstal, service Supervisor akan langsung aktif:
+```bash
+sudo systemctl status supervisor
+```
+</Tab>
+
+<Tab value="CentOS / RHEL / Fedora">
+```bash
+sudo dnf install supervisor
+```
+Aktifkan dan jalankan Supervisor:
+```bash
+sudo systemctl enable supervisord
+sudo systemctl start supervisord
+```
+</Tab>
+
+<Tab value="Arch / Manjaro">
+```bash
+sudo pacman -S supervisor
+```
+Jalankan dengan:
+```bash
+sudo systemctl enable supervisord
+sudo systemctl start supervisord
+```
+</Tab>
+
+<Tab value="Via Python (Cross-platform)">
+Cocok untuk Docker, VPS ringan, atau sistem yang tidak menggunakan package manager standar.
+```bash
+pip install supervisor
+echo_supervisord_conf > supervisord.conf
+```
+Jalankan dengan:
+```bash
+supervisord -c supervisord.conf
+```
+</Tab>
+</Tabs>
+
+📁 Struktur File Konfigurasi
+Setelah instalasi, Supervisor biasanya membaca konfigurasi dari:
+```bash
+/etc/supervisor/supervisord.conf
+
+/etc/supervisor/conf.d/*.conf (untuk konfigurasi per aplikasi)
+```
+Contoh command untuk memuat ulang konfigurasi:
+
+```bash
+sudo supervisorctl reread
+sudo supervisorctl update
+```
+<Callout type="warning"> 
+Pastikan setiap file konfigurasi memiliki ekstensi `.conf` dan format yang valid, karena kesalahan kecil bisa menyebabkan semua service gagal dimuat.
+</Callout>
+🧩 Gunakan Supervisor Jika:
+<Cards>
+<Card title="Kamu Menjalankan Aplikasi Web" description="Menjaga backend seperti Laravel queue, Gunicorn, PM2 tetap aktif" />
+<Card title="Tidak Punya systemd" description="Cocok di container atau distro ringan seperti Alpine" /> <Card title="Butuh Logging Mudah" description="Log stdout dan stderr otomatis disimpan tanpa setup tambahan" /> <Card title="Pengaturan Proses Banyak" description="Satu file bisa mengatur banyak aplikasi dengan kontrol penuh" />
+</Cards>

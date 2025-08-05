@@ -1,0 +1,69 @@
+---
+title: Pengenalan
+description: Supervisor adalah sistem kontrol proses yang memungkinkan pengguna menjalankan dan mengelola aplikasi sebagai background service dengan mudah, stabil, dan otomatis.
+keywords: supervisor, process control, linux, systemd, daemon, service manager, auto restart
+---
+
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { Card, Cards } from 'fumadocs-ui/components/card';
+import { Callout } from 'fumadocs-ui/components/callout';
+
+# Selamat Datang di Dokumentasi Supervisor
+
+Supervisor adalah tool manajemen proses berbasis Python yang dirancang untuk memantau dan mengendalikan aplikasi di sistem operasi Unix/Linux. Cocok digunakan untuk menjalankan aplikasi sebagai background service (daemon) tanpa perlu menggunakan `systemd`.
+
+## ✨ Kenapa Menggunakan Supervisor?
+
+### 🔄 Proses Otomatis dan Stabil
+Supervisor memungkinkan kamu:
+1. Menjalankan aplikasi secara otomatis saat boot
+2. Restart otomatis saat aplikasi crash
+3. Menjaga service tetap hidup 24/7
+
+### ⚙️ Konfigurasi Sederhana
+Mengelola banyak proses hanya dengan file konfigurasi `.conf`. Tanpa skrip tambahan atau setup rumit.
+
+### 📈 Monitoring & Logging
+- Setiap proses memiliki log stdout dan stderr terpisah
+- Dapat dipantau melalui command line, web UI, atau API XML-RPC
+
+## 📦 Use Case Umum
+
+<Cards>
+  <Card 
+    title="Web Server" 
+    description="Menjalankan Node.js, Laravel queue, atau Gunicorn sebagai service"
+  />
+  <Card 
+    title="Background Jobs" 
+    description="Menjaga worker aplikasi tetap berjalan seperti Celery, Redis worker, Laravel Horizon"
+  />
+  <Card 
+    title="API/Service Kecil" 
+    description="Menjaga aplikasi kecil tetap aktif tanpa systemd"
+  />
+  <Card 
+    title="Sistem Monitoring" 
+    description="Menjalankan service ping, notifikasi, atau scraper berkala"
+  />
+</Cards>
+
+## 🔧 Fitur Utama
+
+### ✅ Auto Restart
+Jika proses mati, Supervisor akan otomatis menjalankannya kembali.
+
+### 📝 Logging
+Setiap service bisa diatur lokasi log-nya untuk debugging atau monitoring.
+
+### 🖥️ Web Dashboard (opsional)
+Supervisor juga menyediakan web UI untuk melihat status service dan mengontrolnya.
+
+### 🔒 Akses Terkontrol
+Konfigurasi level akses untuk menghindari eksekusi yang tidak diinginkan.
+
+<Callout type="info">
+Supervisor cocok digunakan di environment non-systemd, container, VPS, atau server ringan yang butuh kontrol proses tanpa kompleksitas tambahan.
+</Callout>
+
+---

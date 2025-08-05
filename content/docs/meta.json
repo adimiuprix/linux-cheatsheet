@@ -1,0 +1,16 @@
+{
+  "title": "Documentation",
+  "pages": [
+    "index",
+
+    "--- LINUX (UNIX) ---",
+    "./linux/pengenalan.mdx",
+    "./linux/package.mdx",
+    
+    "--- SUPERVISOR ---",
+    "./supervisor/pengenalan",
+    "./supervisor/installasi",
+    "./supervisor/konfigurasi",
+    "./supervisor/perintah"
+  ]
+}
