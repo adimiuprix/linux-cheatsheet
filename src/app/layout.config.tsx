@@ -34,11 +34,11 @@ export const baseOptions: BaseLayoutProps = {
           src="/logo.png"
           width={28}
           height={28}
-          alt="Role Reactor Logo"
+          alt="Logo"
           className="inline-block"
           priority
         />
-        Role Reactor
+        Linux Cheatsheet
       </>
     ),
   },
