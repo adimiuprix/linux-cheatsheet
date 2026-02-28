@@ -11,6 +11,12 @@
     "./supervisor/pengenalan",
     "./supervisor/installasi",
     "./supervisor/konfigurasi",
-    "./supervisor/perintah"
+    "./supervisor/perintah",
+
+    "--- Process Manager (PM2) ---",
+    "./pm2/pengenalan",
+    "./pm2/installasi",
+    "./pm2/konfigurasi",
+    "./pm2/perintah"
   ]
 }

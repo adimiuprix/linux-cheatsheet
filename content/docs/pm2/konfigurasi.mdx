@@ -1,0 +1,23 @@
+---
+title: Konfigurasi
+description: Panduan konfigurasi PM2 untuk mengatur proses, log, dan environment aplikasi Node.js.
+keywords: PM2, konfigurasi, Node.js, process manager, ecosystem file
+---
+
+# Konfigurasi PM2
+
+Setelah menginstall PM2, kamu bisa melakukan **konfigurasi** agar aplikasi Node.js berjalan sesuai kebutuhan, mulai dari pengaturan environment, log, hingga jumlah instance.
+
+## 1. Menggunakan Ecosystem File
+
+PM2 mendukung **ecosystem file** (biasanya `ecosystem.config.js`) untuk mengatur banyak aplikasi sekaligus.
+
+Contoh:
+
+```javascript id="ecosystem"
+module.exports = {
+  apps : [{
+    name   : "app1",
+    script : "./app.js"
+  }]
+}

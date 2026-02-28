@@ -1,0 +1,79 @@
+---
+title: Perintah
+description: Daftar perintah dasar PM2 untuk menjalankan, memantau, dan mengelola aplikasi Node.js.
+keywords: PM2, perintah, command, Node.js, monitoring, process manager
+---
+
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+
+# Perintah Dasar PM2
+
+Setelah install dan konfigurasi, berikut perintah-perintah penting PM2 yang wajib kamu tahu.
+
+## 1. Menjalankan Aplikasi
+
+<Tabs items={['Contoh dasar', 'Laravel', 'Nextjs']}>
+
+<Tab value="Contoh dasar">
+```bash
+pm2 start nama_proses.js
+```
+</Tab>
+
+<Tab value="Laravel">
+```bash
+pm2 start "php artisan serve --host=0.0.0.0 --port=8000" --name laravel-app
+pm2 start "php artisan serve" --name laravel-app
+```
+</Tab>
+
+<Tab value="Nextjs">
+```bash
+pm2 start "npm run dev" --name nextjs-app
+pm2 start "npm run build" --name nextjs-app
+pm2 start "npm run start" --name nextjs-app
+```
+</Tab>
+
+</Tabs>
+
+dapat di tambah parameter seperti:
+-  `--name <nama>` memberi nama custom pada proses
+- `-i <jumlah>` menjalankan mode cluster dengan jumlah instance tertentu
+
+## 2. Melihat Status Aplikasi
+```bash
+pm2 list
+```
+Menampilkan daftar aplikasi yang sedang berjalan beserta status, CPU, dan memory usage.
+
+## 3. Melihat Log
+```bash
+pm2 logs
+pm2 logs nama_proses
+```
+
+## 4. Restart Aplikasi
+```bash
+pm2 restart nama_proses
+```
+reload tanpa downtime (untuk cluster mode) `pm2 reload nama_proses`
+
+## 5. Stop & Delete Aplikasi
+```bash
+pm2 stop nama_proses
+pm2 delete nama_proses
+```
+
+## 6. Menyimpan Konfigurasi
+```bash
+pm2 save
+```
+Menyimpan daftar aplikasi agar otomatis dijalankan saat server reboot.
+
+## 7. Monitoring
+```bash
+pm2 monit
+```
+
+Menampilkan dashboard live monitoring CPU, memory, dan log setiap aplikasi.
