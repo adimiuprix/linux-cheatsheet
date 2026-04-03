@@ -4,13 +4,13 @@ import type { Metadata } from "next";
 import { links } from "@/constants/links";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy - Role Reactor",
+  title: "Privacy Policy - Linux Cheatsheet",
   description:
-    "Privacy Policy for Role Reactor Discord Bot - How we collect, use, and protect your data.",
+    "Privacy Policy for Linux Cheatsheet - How we protect your data.",
   openGraph: {
-    title: "Privacy Policy - Role Reactor",
+    title: "Privacy Policy - Linux Cheatsheet",
     description:
-      "Privacy Policy for Role Reactor Discord Bot - How we collect, use, and protect your data.",
+      "Privacy Policy for Linux Cheatsheet - How we protect your data.",
     url: "/privacy",
   },
 };
@@ -682,14 +682,14 @@ export default function PrivacyPage() {
                   </Link>
                 </li>
                 <li>
-                  <strong>Support Server:</strong>{" "}
+                  <strong>GitHub Repository:</strong>{" "}
                   <Link
-                    href={links.support}
+                    href={links.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-indigo-600 dark:text-indigo-400 hover:underline"
                   >
-                    Join our Discord server
+                    GitHub Issues
                   </Link>{" "}
                   for assistance
                 </li>

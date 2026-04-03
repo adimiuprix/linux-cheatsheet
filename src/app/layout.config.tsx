@@ -2,16 +2,10 @@ import type { LinkItemType, BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 import { Heart } from "lucide-react";
 import Image from "next/image";
 import { BsGithub } from "react-icons/bs";
-import { FaDiscord } from "react-icons/fa";
 
 import { links } from "@/constants/links";
 
 export const linkItems: LinkItemType[] = [
-  {
-    text: "Support",
-    url: links.support,
-    icon: <Heart />,
-  },
   {
     type: "icon",
     url: links.github,
@@ -48,14 +42,6 @@ export const baseOptions: BaseLayoutProps = {
       url: links.github,
       external: true,
       icon: <BsGithub className="w-5 h-5" />,
-    },
-    {
-      type: "icon",
-      text: "Discord",
-      url: links.support,
-      external: true,
-      secondary: true,
-      icon: <FaDiscord className="w-5 h-5" />,
     },
   ],
 };

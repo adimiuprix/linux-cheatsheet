@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Audiowide } from "next/font/google";
-import { FaDiscord } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 
 import { Typewriter } from "@/components/common/typewriter";
@@ -16,7 +15,7 @@ const audiowide = Audiowide({
 
 export function Hero() {
   const tagline =
-    "Discord role management, simplified. Set up reaction roles in minutes.";
+    "Interactive Linux command reference. Master the terminal with ease.";
 
   return (
     <section className="flex flex-col items-center justify-center min-h-screen px-4 relative overflow-hidden">
@@ -42,7 +41,7 @@ export function Hero() {
                 src="/logo.png"
                 width={64}
                 height={64}
-                alt="Role Reactor Logo"
+                alt="Linux Cheatsheet Logo"
                 priority
                 className="relative z-10 drop-shadow-lg"
               />
@@ -53,9 +52,9 @@ export function Hero() {
                 "text-4xl md:text-5xl font-medium animate-slide-up",
                 audiowide.className
               )}
-              aria-label="Role Reactor homepage title"
+              aria-label="Linux Cheatsheet homepage title"
             >
-              Role Reactor
+              Linux Cheatsheet
             </h1>
           </div>
         </div>

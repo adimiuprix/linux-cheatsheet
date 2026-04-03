@@ -15,16 +15,16 @@ export function Footer() {
                 src="/logo.png"
                 width={32}
                 height={32}
-                alt="Role Reactor Logo"
+                alt="Linux Cheatsheet Logo"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg blur-md opacity-20 scale-110"></div>
+              <div className="absolute inset-0 bg-linear-to-r from-blue-500 to-purple-500 rounded-lg blur-md opacity-20 scale-110"></div>
             </div>
             <div>
               <span className="font-semibold dark:to-gray-300 text-[var(--color-fd-foreground)]">
-                Role Reactor
+                Linux Cheatsheet
               </span>
               <div className="text-xs text-gray-600 dark:text-gray-400">
-                Discord Bot
+                CLI Documentation
               </div>
             </div>
           </div>
@@ -50,26 +50,26 @@ export function Footer() {
               Terms of Use
             </Link>
             <Link
-              href={links.support}
+              href={links.github}
               className="text-gray-600 dark:text-gray-400 hover:text-[var(--color-fd-foreground)] transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Support
+              GitHub
             </Link>
           </div>
         </div>
 
         {/* Copyright */}
         <div className="mt-8 pt-8 border-t border-gray-200/50 dark:border-gray-800/50 text-center text-xs text-gray-600 dark:text-gray-400">
-          © {new Date().getFullYear()} Role Reactor. Built with 💜 by{" "}
+          © {new Date().getFullYear()} Linux Cheatsheet. Built by{" "}
           <Link
             href={links.author.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-medium hover:from-blue-600 hover:to-purple-400 transition-all duration-200"
+            className="bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent font-medium hover:from-blue-600 hover:to-purple-400 transition-all duration-200"
           >
-            Tyecode
+            {links.author.name}
           </Link>
         </div>
       </div>

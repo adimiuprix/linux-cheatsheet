@@ -4,13 +4,13 @@ import type { Metadata } from "next";
 import { links } from "@/constants/links";
 
 export const metadata: Metadata = {
-  title: "Terms of Use - Role Reactor",
+  title: "Terms of Use - Linux Cheatsheet",
   description:
-    "Terms of Use for Role Reactor Discord Bot - Rules and conditions for using our service.",
+    "Terms of Use for Linux Cheatsheet - Rules and conditions for using our documentation.",
   openGraph: {
-    title: "Terms of Use - Role Reactor",
+    title: "Terms of Use - Linux Cheatsheet",
     description:
-      "Terms of Use for Role Reactor Discord Bot - Rules and conditions for using our service.",
+      "Terms of Use for Linux Cheatsheet - Rules and conditions for using our documentation.",
     url: "/terms",
   },
 };
@@ -590,12 +590,12 @@ export default function TermsPage() {
                 <li>
                   <strong>Support Server:</strong>{" "}
                   <Link
-                    href={links.support}
+                    href={links.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-indigo-600 dark:text-indigo-400 hover:underline"
                   >
-                    Join our Discord server
+                    GitHub Repository
                   </Link>{" "}
                   for assistance
                 </li>
