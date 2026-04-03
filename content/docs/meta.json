@@ -2,21 +2,20 @@
   "title": "Documentation",
   "pages": [
     "index",
-
     "--- LINUX (UNIX) ---",
     "./linux/pengenalan.mdx",
     "./linux/package.mdx",
-    
     "--- SUPERVISOR ---",
     "./supervisor/pengenalan",
     "./supervisor/installasi",
     "./supervisor/konfigurasi",
     "./supervisor/perintah",
-
     "--- Process Manager (PM2) ---",
     "./pm2/pengenalan",
     "./pm2/installasi",
     "./pm2/konfigurasi",
-    "./pm2/perintah"
+    "./pm2/perintah",
+    "--- Web Server ---",
+    "./web-server/nginx"
   ]
 }

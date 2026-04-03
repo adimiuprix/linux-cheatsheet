@@ -1,0 +1,175 @@
+---
+title: Nginx
+description: Panduan instalasi dan konfigurasi Nginx Web Server.
+keywords: nginx, web server, reverse proxy, konfigurasi nginx, ssl, https, ubuntu, linux
+---
+
+import { Callout } from 'fumadocs-ui/components/callout';
+
+# Nginx Web Server
+
+Nginx adalah web server tercepat dan paling populer yang digunakan untuk hosting website, reverse proxy, load balancing, dan HTTP caching.
+
+## 🚀 Instalasi & Service
+
+Gunakan perintah berikut untuk menginstal Nginx pada sistem berbasis Ubuntu/Debian:
+
+```bash
+# Update repository
+sudo apt update && sudo apt upgrade -y
+
+# Install Nginx
+sudo apt install nginx -y
+
+# Kelola Service Nginx
+sudo systemctl start nginx
+sudo systemctl enable nginx
+sudo systemctl status nginx
+```
+
+## 🛡️ Konfigurasi Firewall
+
+Jika kamu menggunakan UFW, pastikan untuk mengizinkan trafik HTTP dan HTTPS:
+
+```bash
+sudo ufw allow 'Nginx Full'
+```
+
+## ⚙️ Konfigurasi Server Block
+
+Server block (seperti Virtual Hosts di Apache) memungkinkan kamu menjalankan lebih dari satu website dalam satu server.
+
+### Konfigurasi Dasar (HTTP & HTTPS)
+
+Berikut adalah contoh konfigurasi standar untuk domain `domain_name.site`:
+
+```nginx title="/etc/nginx/sites-available/domain_name.site"
+server {
+    listen 80;
+    server_name domain_name.site www.domain_name.site;
+
+    # Root directory
+    root /var/www/domain_name.site;
+    index index.php index.html index.htm;
+
+    # Try files
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    # PHP-FPM
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php8.5-fpm.sock;
+    }
+
+    # Deny access to hidden files
+    location ~ /\.ht {
+        deny all;
+    }
+
+    # Redirect ke HTTPS
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+
+    server_name domain_name.site www.domain_name.site;
+
+    root /var/www/domain_name.site;
+    index index.php index.html index.htm;
+
+    # SSL Certificate
+    ssl_certificate /etc/nginx/ssl/domain_name.site/fullchain.pem;
+    ssl_certificate_key /etc/nginx/ssl/domain_name.site/privkey.key;
+
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    # PHP-FPM
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php8.5-fpm.sock;
+    }
+
+    # Deny access to hidden files
+    location ~ /\.ht {
+        deny all;
+    }
+}
+```
+
+## ✨ Versi Ringkas (Optimized)
+
+Ini adalah versi yang lebih bersih dan modern, menggabungkan HTTP redirect dan HTTPS block dengan security header tambahan.
+
+```nginx title="/etc/nginx/sites-available/domain_name.site"
+# Redirect semua HTTP ke HTTPS
+server {
+    listen 80;
+    listen [::]:80;
+    server_name domain_name.site www.domain_name.site;
+
+    return 301 https://$host$request_uri;
+}
+
+# Server utama HTTPS
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    server_name domain_name.site www.domain_name.site;
+
+    root /var/www/domain_name.site;
+    index index.php index.html index.htm;
+
+    # Sertifikat SSL
+    ssl_certificate /etc/nginx/ssl/domain_name.site.pem;
+    ssl_certificate_key /etc/nginx/ssl/domain_name.site.key;
+
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
+
+    # Security Headers
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-Content-Type-Options "nosniff";
+    add_header X-XSS-Protection "1; mode=block";
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php8.5-fpm.sock;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
+```
+
+## 🛠️ Aktivasi & Verifikasi
+
+Setelah membuat file konfigurasi, aktifkan dengan membuat symbolic link dan memuat ulang Nginx:
+
+```bash
+# Aktifkan konfigurasi
+sudo ln -s /etc/nginx/sites-available/domain_name.site /etc/nginx/sites-enabled/
+
+# Cek apakah ada error syntax
+sudo nginx -t
+
+# Muat ulang Nginx jika tidak ada error
+sudo systemctl reload nginx
+```
+
+<Callout type="warning">
+Pastikan path `fastcgi_pass` sesuai dengan versi PHP yang kamu gunakan (contoh: `php8.5-fpm.sock`).
+</Callout>
