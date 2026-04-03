@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Audiowide } from "next/font/google";
 import { FaDiscord } from "react-icons/fa";
-import { cn } from "fumadocs-ui/utils/cn";
+import { cn } from "@/lib/utils";
 
 import { Typewriter } from "@/components/common/typewriter";
 import { links } from "@/constants/links";
@@ -22,10 +22,10 @@ export function Hero() {
     <section className="flex flex-col items-center justify-center min-h-screen px-4 relative overflow-hidden">
       {/* Animated Background Shapes */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute w-[220px] h-[220px] bg-gradient-to-br from-blue-200 to-purple-200 rounded-full blur-3xl opacity-25 animate-bg-move-1" />
-        <div className="absolute w-[180px] h-[180px] bg-gradient-to-br from-indigo-200 to-blue-200 rounded-full blur-2xl opacity-20 animate-bg-move-2" />
+        <div className="absolute w-[220px] h-[220px] bg-linear-to-br from-blue-200 to-purple-200 rounded-full blur-3xl opacity-25 animate-bg-move-1" />
+        <div className="absolute w-[180px] h-[180px] bg-linear-to-br from-indigo-200 to-blue-200 rounded-full blur-2xl opacity-20 animate-bg-move-2" />
         <div
-          className="absolute w-[60px] h-[60px] bg-gradient-to-br from-purple-200 to-indigo-200 rounded-full blur-xl opacity-15 animate-bg-move-3"
+          className="absolute w-[60px] h-[60px] bg-linear-to-br from-purple-200 to-indigo-200 rounded-full blur-xl opacity-15 animate-bg-move-3"
           style={{
             left: "50%",
             top: "50%",
@@ -34,7 +34,7 @@ export function Hero() {
         />
       </div>
 
-      <div className="max-w-[var(--spacing-fd-container)] mx-auto text-center space-y-8 relative z-10">
+      <div className="max-w-(--spacing-fd-container) mx-auto text-center space-y-8 relative z-10">
         <div className="flex flex-col items-center justify-center gap-2 mb-8">
           <div className="flex items-center justify-center gap-4 flex-col md:flex-row">
             <div className="relative animate-fade-in">
@@ -46,7 +46,7 @@ export function Hero() {
                 priority
                 className="relative z-10 drop-shadow-lg"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-200 to-purple-200 rounded-full blur-lg opacity-15 scale-110"></div>
+              <div className="absolute inset-0 bg-linear-to-r from-blue-200 to-purple-200 rounded-full blur-lg opacity-15 scale-110"></div>
             </div>
             <h1
               className={cn(

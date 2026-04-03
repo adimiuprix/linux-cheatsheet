@@ -1,4 +1,4 @@
-import { cn } from "fumadocs-ui/utils/cn";
+import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
 interface TypewriterProps {
