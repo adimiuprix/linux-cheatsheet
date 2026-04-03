@@ -16,6 +16,8 @@
     "./pm2/konfigurasi",
     "./pm2/perintah",
     "--- Web Server ---",
-    "./web-server/nginx"
+    "./web-server/php",
+    "./web-server/nginx",
+    "./web-server/mysql"
   ]
 }

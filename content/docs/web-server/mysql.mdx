@@ -1,0 +1,92 @@
+---
+title: MySQL
+description: Panduan instalasi dan dasar-dasar MySQL Server.
+keywords: mysql, database, sql, install mysql, ubuntu, linux
+---
+
+import { Callout } from 'fumadocs-ui/components/callout';
+
+# MySQL Server
+
+MySQL adalah sistem manajemen database (RDBMS) yang paling banyak digunakan di dunia untuk aplikasi web.
+
+## 🚀 Instalasi MySQL
+
+Instalasi dasar MySQL di Ubuntu/Debian:
+
+```bash
+# Install MySQL
+sudo apt update
+sudo apt install mysql-server -y
+
+# Cek Status
+sudo systemctl status mysql
+```
+
+## 🔐 Konfigurasi Keamanan
+
+Jika kamu ingin mengatur password `root` dan mengamankan database:
+
+```sql
+# Masuk ke terminal MySQL
+sudo mysql
+
+# Jalankan perintah SQL ini
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password_kamu';
+FLUSH PRIVILEGES;
+EXIT;
+```
+
+Sekarang kamu dapat login dengan:
+
+```bash
+mysql -u root -p
+```
+
+## 🛠️ Manajemen Database & User
+
+Berikut adalah perintah dasar SQL untuk mengelola database dan user:
+
+```sql
+# Membuat database baru
+CREATE DATABASE nama_db;
+
+# Membuat akun user baru
+CREATE USER 'nama_user'@'localhost' IDENTIFIED BY 'password_baru';
+
+# Memberikan hak akses ke database
+GRANT ALL PRIVILEGES ON nama_db.* TO 'nama_user'@'localhost';
+
+# Mengganti password user
+ALTER USER 'nama_user'@'localhost' IDENTIFIED BY 'password_baru';
+
+# Terapkan perubahan
+FLUSH PRIVILEGES;
+```
+
+## 🗑️ Menghapus MySQL (Uninstall)
+
+Jika kamu ingin menghapus MySQL secara bersih dari server:
+
+```bash
+# Berhentikan service
+sudo systemctl stop mysql
+sudo systemctl stop mysqld
+
+# Hapus paket aplikasi
+sudo apt purge mysql-server mysql-client mysql-common mysql-server-core-* mysql-client-core-*
+sudo apt autoremove
+sudo apt autoclean
+
+# Hapus direktori database secara permanen
+sudo rm -rf /etc/mysql /var/lib/mysql /var/log/mysql
+sudo rm -rf /var/run/mysqld
+
+# Hapus user sistem MySQL
+sudo deluser mysql
+sudo delgroup mysql
+```
+
+<Callout type="warning">
+Hati-hati: Menghapus folder `/var/lib/mysql` akan menghapus seluruh database kamu secara permanen.
+</Callout>

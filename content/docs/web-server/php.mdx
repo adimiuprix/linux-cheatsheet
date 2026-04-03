@@ -1,0 +1,79 @@
+---
+title: PHP
+description: Panduan instalasi dan manajemen PHP serta ekstensinya.
+keywords: php, php-fpm, ubuntu, linux, php extensions, ppa ondrej
+---
+
+import { Callout } from 'fumadocs-ui/components/callout';
+
+# PHP (PHP-FPM)
+
+PHP adalah bahasa scripting populer yang digunakan untuk pengembangan web. Versi PHP-FPM (FastCGI Process Manager) sangat direkomendasikan untuk digunakan bersama Nginx.
+
+## 🚀 Instalasi PHP
+
+Gunakan repository PPA dari Ondrej Surý untuk mendapatkan versi PHP terbaru di Ubuntu:
+
+```bash
+# Persiapan repository
+sudo apt update
+sudo apt install software-properties-common -y
+sudo add-apt-repository ppa:ondrej/php -y
+sudo apt update
+
+# Install PHP Core dan FPM
+sudo apt install php8.5 php8.5-fpm -y
+```
+
+## 🧩 Install Ekstensi PHP
+
+Berikut adalah kumpulan perintah untuk menginstal berbagai ekstensi PHP yang umum dibutuhkan:
+
+```bash
+# Database
+sudo apt install php8.5-mysql php8.5-pgsql php8.5-sqlite3
+
+# Image & Graphic
+sudo apt install php8.5-gd php8.5-imagick
+
+# String & XML
+sudo apt install php8.5-mbstring php8.5-xml php8.5-intl php8.5-soap
+
+# Compression & Security
+sudo apt install php8.5-zip php8.5-bcmath
+
+# Tools & Others
+sudo apt install php8.5-cli php8.5-curl php8.5-readline php8.5-redis
+
+# Debugging (Optional)
+sudo apt install php8.5-xdebug
+```
+
+## ⚙️ Manajemen Service
+
+Pastikan service PHP-FPM berjalan dengan benar:
+
+```bash
+# Kelola Service
+sudo systemctl enable php8.5-fpm
+sudo systemctl start php8.5-fpm
+sudo systemctl status php8.5-fpm
+```
+
+## 🛠️ Perintah Lainnya
+
+Jika kamu memiliki lebih dari satu versi PHP di server, kamu bisa mengatur versi default dengan perintah:
+
+```bash
+sudo update-alternatives --set php /usr/bin/php8.5
+```
+
+Untuk mengecek ekstensi apa saja yang sudah terinstal:
+
+```bash
+php -m
+```
+
+<Callout type="info">
+Setelah menginstal ekstensi baru, jangan lupa untuk memuat ulang service PHP-FPM dengan `sudo systemctl reload php8.5-fpm`.
+</Callout>
